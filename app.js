@@ -6,7 +6,7 @@ const cors = require("cors");
 const port = process.env.PORT || 3000;
 app.use(cors());
 app.get("/", (req, res) => {
-  res.send("<h1>Chess App</h1> <h4>AAAAA</h4> <p>Version 5432</p>");
+  res.send("<h1>Chess App</h1> <h4>Provisioning!</h4> <p>Version 5432</p>");
 });
 
 app.get("/products", (req, res) => {
