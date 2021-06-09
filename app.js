@@ -4,7 +4,7 @@ const socket = require("socket.io");
 const cors = require("cors");
 
 const port = process.env.PORT || 3000;
-
+app.use(cors());
 app.get("/", (req, res) => {
   res.send(
     "<h1>Express Demo App</h1> <h4>Message: Is this working?</h4> <p>Version 42.0</p>"
@@ -27,8 +27,6 @@ app.get("/products", (req, res) => {
 const server = app.listen(port, () => {
   console.log(`Demo app is up and listening to port: ${port}`);
 });
-
-app.use(cors());
 
 // socket setup
 const io = socket(server, {
