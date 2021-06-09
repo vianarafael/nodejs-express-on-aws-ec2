@@ -5,21 +5,9 @@ const cors = require("cors");
 
 const port = process.env.PORT || 3000;
 app.use(cors());
-app.get("/", (req, res) => {
-  res.send("<h1>Chess App</h1> <h4>Provisioning!</h4> <p>Version 5432</p>");
-});
-
-app.get("/products", (req, res) => {
-  res.send([
-    {
-      productId: "101",
-      price: 100,
-    },
-    {
-      productId: "102",
-      price: 150,
-    },
-  ]);
+app.use(express.static(__dirname + "/build"));
+app.get("/test", (req, res) => {
+  res.send("<h1>Chess App</h1> <h4>This is a test</h4> <p>Version 0.0</p>");
 });
 
 const server = app.listen(port, () => {
@@ -29,7 +17,7 @@ const server = app.listen(port, () => {
 // socket setup
 const io = socket(server, {
   cors: {
-    origin: "https://multi-chess.s3.us-east-2.amazonaws.com/index.html",
+    origin: "https://chess-backend-2021-rafa.herokuapp.com/",
     methods: ["GET", "POST"],
     allowedHeaders: ["my-custom-header"],
     credentials: true,
